@@ -1,0 +1,75 @@
+#!/bin/bash
+# A simple shell script to print Hello World
+echo "Hello, World!"
+#!/bin/bash
+# Shell script to find the factorial of a number
+
+echo "Enter a number:"
+read num
+factorial=1
+
+if [ $num -lt 0 ]; then
+    echo "Factorial does not exist for negative numbers."
+else
+    for (( i=1; i<=num; i++ ))
+    do
+        factorial=$((factorial * i))
+    done
+    echo "The factorial of $num is $factorial."
+fi
+#!/bin/bash
+# Shell script to calculate gross salary
+
+echo "Enter basic salary:"
+read basic_salary
+
+echo "Enter HRA percentage:"
+read hra_percentage
+
+echo "Enter DA percentage:"
+read da_percentage
+
+hra=$(echo "$basic_salary * $hra_percentage / 100" | bc)
+da=$(echo "$basic_salary * $da_percentage / 100" | bc)
+gross_salary=$(echo "$basic_salary + $hra + $da" | bc)
+
+echo "The gross salary is $gross_salary."
+#!/bin/bash
+# Shell script to display a menu and execute options
+
+while true; do
+    echo "Menu:"
+    echo "1. List of files"
+    echo "2. Process status"
+    echo "3. Current date and time"
+    echo "4. Users logged in"
+    echo "5. Quit"
+    echo "Enter your choice:"
+    read choice
+
+    case $choice in
+        1)
+            echo "Listing files..."
+            ls
+            ;;
+        2)
+            echo "Process status..."
+            ps
+            ;;
+        3)
+            echo "Current date and time..."
+            date
+            ;;
+        4)
+            echo "Users logged in..."
+            who
+            ;;
+        5)
+            echo "Exiting the program. Goodbye!"
+            exit 0
+            ;;
+        *)
+            echo "Invalid choice. Please try again."
+            ;;
+    esac
+done
